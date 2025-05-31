@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2286077779464673171}
   - component: {fileID: 4892115389867059219}
   - component: {fileID: 803432995082203630}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 3253358854081827193}
   - component: {fileID: 5588104648358323003}
   - component: {fileID: 8954829625732583502}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: apple-stem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
