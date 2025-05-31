@@ -3,6 +3,7 @@ using UnityEngine;
 public class PickUpController : MonoBehaviour
 {
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Transform objectGrabTransform;
     [SerializeField] private float pickupRange;
     [SerializeField] private LayerMask layerMask;
 
@@ -12,7 +13,10 @@ public class PickUpController : MonoBehaviour
         {
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit rHit, pickupRange, layerMask: layerMask))
             {
-                Debug.Log("Click");
+                if (rHit.transform.TryGetComponent(out PickUpItem item))
+                {
+                    item.Grab(objectGrabTransform);
+                }
             }
         }
     }
