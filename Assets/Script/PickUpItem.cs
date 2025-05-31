@@ -18,6 +18,12 @@ public class PickUpItem : MonoBehaviour
         rigidbody.useGravity = false;
     }
 
+    public void Drop()
+    {
+        this.objectGrabTransform = null;
+        rigidbody.useGravity = true;
+    }
+
     private void FixedUpdate()
     {
         if (objectGrabTransform != null)

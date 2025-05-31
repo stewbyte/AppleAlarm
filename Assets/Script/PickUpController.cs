@@ -7,16 +7,27 @@ public class PickUpController : MonoBehaviour
     [SerializeField] private float pickupRange;
     [SerializeField] private LayerMask layerMask;
 
+    private PickUpItem itemGrabbable;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit rHit, pickupRange, layerMask: layerMask))
+            if (itemGrabbable == null)
             {
-                if (rHit.transform.TryGetComponent(out PickUpItem item))
+
+                if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit rHit, pickupRange, layerMask: layerMask))
                 {
-                    item.Grab(objectGrabTransform);
+                    if (rHit.transform.TryGetComponent(out itemGrabbable))
+                    {
+                        itemGrabbable.Grab(objectGrabTransform);
+                    }
                 }
+            }
+            else
+            {
+                itemGrabbable.Drop();
+                itemGrabbable = null;
             }
         }
     }
