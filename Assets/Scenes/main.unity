@@ -2787,7 +2787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 8338988565591873055}
   objectGrabTransform: {fileID: 1497791119}
-  pickupRange: 5
+  pickupRange: 2
   layerMask:
     serializedVersion: 2
     m_Bits: 8
