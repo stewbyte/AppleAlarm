@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class AppleCountManager : MonoBehaviour
 {
+    [SerializeField] private TMP_Text counterText;
     public int appleCount = 0;
 
     private HashSet<GameObject> applesInBowl = new HashSet<GameObject>();
@@ -13,6 +15,7 @@ public class AppleCountManager : MonoBehaviour
         {
             applesInBowl.Add(other.gameObject);
             appleCount = applesInBowl.Count;
+            UpdateCounter(appleCount.ToString());
         }
     }
 
@@ -22,6 +25,12 @@ public class AppleCountManager : MonoBehaviour
         {
             applesInBowl.Remove(other.gameObject);
             appleCount = applesInBowl.Count;
+            UpdateCounter(appleCount.ToString());
         }
+    }
+
+    public void UpdateCounter(string value)
+    {
+        counterText.text = value;
     }
 }
