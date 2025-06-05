@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     public void StartNewRound()
     {
         int a, b;
+        int basketCount = appleCounter != null ? appleCounter.appleCount : 0;
 
         operation = (Random.value > 0.5f) ? OperationType.Addition : OperationType.Subtraction;
 
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
             currentAnswer = operation == OperationType.Addition ? a + b : a - b;
             Debug.Log($"Trying: {a} {(operation == OperationType.Addition ? "+" : "-")} {b} = {currentAnswer}");
         }
-        while (currentAnswer == previousAnswer || currentAnswer < 0 || currentAnswer > maxApples);
+        while (currentAnswer == previousAnswer || currentAnswer < 0 || currentAnswer > maxApples || currentAnswer == basketCount);
 
         previousAnswer = currentAnswer;
 
@@ -73,5 +74,4 @@ public class GameManager : MonoBehaviour
 
         Debug.Log($"New question: {questionText.text} = {currentAnswer}");
     }
-
 }
