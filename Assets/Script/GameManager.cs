@@ -26,13 +26,13 @@ public class GameManager : MonoBehaviour
         StartNewRound();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (appleCounter == null || waitingForNextRound) return;
 
         int count = appleCounter.appleCount;
 
-        if (count == currentAnswer)
+        if (count == currentAnswer) // todo: put this in a method and call it after each collision detection event
         {
             Debug.Log("Correct answer!");
             waitingForNextRound = true;
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             Invoke(nameof(StartNewRound), 1f);
         }
 
-        if (Input.GetKeyDown(KeyCode.R)) // Force next round manually for debugging
+        if (Input.GetKeyDown(KeyCode.R)) // force next round manually for debugging
         {
             StartNewRound();
         }
